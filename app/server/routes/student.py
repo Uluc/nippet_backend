@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Body
 from fastapi.encoders import jsonable_encoder
 
-from ..database import (
+from ..crud.student import (
     add_student,
     delete_student,
     retrieve_student,
@@ -55,7 +55,6 @@ async def update_student_data(id: str, req: UpdateStudentModel = Body(...)):
         404,
         "There was an error updating the student data.",
     )
-
 
 @router.delete("/{id}", response_description="Student data deleted from the database")
 async def delete_student_data(id: str):
